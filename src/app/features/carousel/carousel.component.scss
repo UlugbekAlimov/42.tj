@@ -1,0 +1,29 @@
+.card {
+  width: 900px; 
+}
+
+@media (max-width: 1024px) {
+  .card {
+    width: 90%; 
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%; 
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  width: 10px; 
+  height: 10px; 
+  border-radius: 50%;
+  transition: background-color 0.5s;
+}
+

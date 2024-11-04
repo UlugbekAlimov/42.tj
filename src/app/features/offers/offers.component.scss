@@ -1,0 +1,7 @@
+.info_blocks{
+  @apply relative overflow-hidden rounded-lg border p-2 cursor-default hover:shadow-lg transition-all duration-200 ease-in-out
+}
+
+.info_blocks_dw{
+  @apply flex flex-col gap-3 justify-between rounded-md p-6
+}
