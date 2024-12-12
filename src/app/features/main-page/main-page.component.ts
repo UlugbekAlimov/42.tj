@@ -1,9 +1,22 @@
 import { Component } from '@angular/core';
+import { OffersComponent } from '../offers/offers.component';
+import { StatisticsComponent } from '../statistics/statistics.component';
+import { TeamComponent } from '../team/team.component';
+import { StudentsComponent } from '../students/students.component';
+import { CarouselComponent } from '../carousel/carousel.component';
+import { InterstsComponent } from '../intersts/intersts.component';
 
 @Component({
   selector: 'app-main-page',
   standalone: true,
-  imports: [],
+  imports: [
+    OffersComponent,
+    StatisticsComponent,
+    TeamComponent,
+    StudentsComponent,
+    CarouselComponent,
+    InterstsComponent,
+  ],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss'
 })

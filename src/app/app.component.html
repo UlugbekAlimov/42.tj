@@ -1,17 +1,11 @@
-
-<app-navbar></app-navbar>
+<app-navbar *ngIf="showNavbar"></app-navbar>
+<app-course-navbar *ngIf="showCourseNavbar"></app-course-navbar>
 
 <div class="global-container">
   <div class="global-height">
-    <app-main-page></app-main-page>
-    <app-offers></app-offers>
-    <app-statistics></app-statistics>
-    <app-team></app-team>
-    <app-students></app-students>
-    <app-carousel></app-carousel>
-    <app-intersts></app-intersts> 
+    <router-outlet></router-outlet>
   </div>
 </div>
+
 <hr class="border">
-<app-footer></app-footer>
-<router-outlet />
+<app-footer ></app-footer>

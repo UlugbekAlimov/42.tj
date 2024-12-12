@@ -1,23 +1,32 @@
 
-    <section class="p-6 md:p-12 pb-0 md:pb-0 shadow-sm bg-gray-100 rounded-md flex items-start md:items-end flex-col md:flex-row gap-4 justify-between min-h-64">
-      <div class="flex flex-col gap-4 pb-12 w-full">
-        <h2 class="text-4xl md:text-5xl lg:text-7xl text-start font-bold">
-          <span class="block sm:inline-block">Освойте 
-            <span class="underline">
-              <span [innerHTML]="displayedText"></span>
-            </span>
+
+<div class="pt-20">
+  <section class="p-6 md:p-12 pb-0 md:pb-0 shadow-sm bg-gray-100 rounded-md flex items-start md:items-end flex-col md:flex-row gap-4 justify-between min-h-64">
+    <div class="flex flex-col gap-4 pb-12 w-full">
+      <h2 class="text-4xl md:text-5xl lg:text-7xl text-start font-bold">
+        <span class="block sm:inline-block">Освойте 
+          <span class="underline">
+            <span [innerHTML]="displayedText"></span>
           </span>
-          <br class="hidden sm:inline-block">
-          за 42 дня.
-        </h2>
-        <p class="text-base sm:text-lg lg:text-xl">
-          ⚡️42 дня работайте над собой и найдите путь в свое будущее!
-        </p>
-        <div class="flex flex-col md:flex-row items-start gap-2">
-          <a class="inline-flex text-white items-center justify-center text-lg sm:text-xl lg:text-2xl lg:p-4 p-3 rounded-md font-medium bg-[#0f172a] hover:bg-[#292b32]" href="/">
-            <img width="24" loading="lazy" src="../../../assets/img/thunder.gif" alt=""> Присоединиться
-          </a>
-        </div>
+        </span>
+        <br class="hidden sm:inline-block">
+        за 42 дня.
+      </h2>
+      <p class="text-base sm:text-lg lg:text-xl">
+        ⚡️42 дня работайте над собой и найдите путь в свое будущее!
+      </p>
+      <div class="flex flex-col md:flex-row items-start gap-2">
+        <a class="inline-flex text-white items-center justify-center text-lg sm:text-xl lg:text-2xl lg:p-4 p-3 rounded-md font-medium bg-[#0f172a] hover:bg-[#292b32]" href="/">
+          <img width="24" loading="lazy" src="../../../assets/img/thunder.gif" alt=""> Присоединиться
+        </a>
       </div>
-      <img class="w-64 sm:w-72 md:w-80 lg:w-[435px]" src="../../../assets/svg/hey.svg" alt="">
-    </section>
+    </div>
+    <img class="w-64 sm:w-72 md:w-80 lg:w-[435px]" src="../../../assets/svg/hey.svg" alt="">
+  </section>
+</div>
+<app-offers></app-offers>
+<app-statistics></app-statistics>
+<app-team></app-team>
+<app-students></app-students>
+<app-carousel></app-carousel>
+<app-intersts></app-intersts> 
