@@ -24,9 +24,9 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   constructor( private router: Router ){}
 
-  private navbarRoutes: string[] = ['/', '/courses', '/courses-info','/mentors' ]
+  private navbarRoutes: string[] = ['/', '/courses', '/courses-info','/mentors', '/faq' ]
   private courseNavbar: string[] = ['/about-course']
-  private footerRoutes: string[] = ['/', '/courses', '/courses-info', ]
+  private footerRoutes: string[] = ['/', '/faq' ]
 
   get showNavbar():boolean{
     return this.navbarRoutes.includes(this.router.url)

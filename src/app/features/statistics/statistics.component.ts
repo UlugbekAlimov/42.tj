@@ -16,7 +16,7 @@ export class StatisticsComponent implements OnInit {
   };
 
   private targets = {
-    experienceCount: 5,
+    experienceCount: 4,
     studentsCount: 7749,
     lessonsCount: 272,
   };
