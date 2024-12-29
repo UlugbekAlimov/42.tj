@@ -2,8 +2,10 @@
 <app-course-navbar *ngIf="showCourseNavbar"></app-course-navbar>
 
 <div class="global-container">
+  <div class="global-height">
     <router-outlet></router-outlet>
+  </div>
 </div>
 
-<hr *ngIf="showFooter" class="border">
-<app-footer *ngIf="showFooter"></app-footer>
+<hr class="border">
+<app-footer ></app-footer>
