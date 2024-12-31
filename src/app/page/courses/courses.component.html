@@ -15,21 +15,19 @@
     </form>
       </div>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <div 
-    *ngFor="let book of books" 
-    class="rounded-lg border shadow-sm flex flex-col">
+    <div class="rounded-lg border shadow-sm flex flex-col">
       <img
-        [alt]="book.title"
-        [src]="book.image"
+        alt="Express Backend"
         width="400"
         height="225"
         class="rounded-t-md w-full object-cover"
+        src="../../../assets/img/Thumbnail-2.png"
       />
         <div class="flex flex-col space-y-1.5 p-6">
             <h3 class="text-2xl font-semibold leading-none tracking-tight">
-              {{ book.title }}
+                Express Backend
             </h3>
-            <p class="text-sm text-muted-foreground">Автор: {{ book.author }} </p>
+            <p class="text-sm text-muted-foreground">Mentor: Azimjon Pulatov</p>
             <p class="flex flex-wrap gap-1 items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24"
                 height="24" 
@@ -44,7 +42,7 @@
                 <path d="M2 3h20"></path>
                 <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"></path>
                 <path d="m7 21 5-5 5 5"></path>
-                </svg>Кол-во стр: {{ book.pages }}
+                </svg>Кол-во уроков: 32
             </p>
         </div>
         <div 
