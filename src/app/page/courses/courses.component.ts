@@ -32,5 +32,5 @@ export class CoursesComponent {
       image: '../../../assets/img/Thumbnail_JK75iA5.png',
       link: '#'
     },
-  ];
+  ];  
 }
