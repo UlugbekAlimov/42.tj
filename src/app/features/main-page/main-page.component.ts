@@ -21,7 +21,7 @@ import { InterstsComponent } from '../intersts/intersts.component';
   styleUrl: './main-page.component.scss'
 })
 export class MainPageComponent {
-  text1: string = "Книги";
+  text1: string = "Фронтенд";
   text2: string = "Бекенд";
   text3: string = "Мобайл";
   displayedText: string = "";

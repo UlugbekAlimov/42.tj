@@ -3,15 +3,8 @@
     <h2 class="text-3xl font-bold pt-8">Книги</h2>
 
     <form class="max-w-sm mx-auto">
-      <label
-        for="countries"
-        class="block mb-2 text-sm font-medium text-gray-900"
-        >Выберите жанр книги</label
-      >
-      <select
-        id="countries"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-black block w-full p-2.5"
-      >
+      <label for="countries" class="block mb-2 text-sm font-medium text-gray-900">Выберите жанр книги</label>
+      <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-black block w-full p-2.5 ">
         <option disabled selected>Програмирование</option>
         <option value="US">Фантастика</option>
         <option value="CA">Фентези</option>
@@ -20,12 +13,11 @@
         <option value="DE">Комедия</option>
       </select>
     </form>
-  </div>
+      </div>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <div
-      *ngFor="let book of books"
-      class="rounded-lg border shadow-sm flex flex-col"
-    >
+    <div 
+    *ngFor="let book of books" 
+    class="rounded-lg border shadow-sm flex flex-col">
       <img
         [alt]="book.title"
         [src]="book.image"
@@ -33,37 +25,32 @@
         height="225"
         class="rounded-t-md w-full object-cover"
       />
-      <div class="flex flex-col space-y-1.5 p-6">
-        <h3 class="text-2xl font-semibold leading-none tracking-tight">
-          {{ book.title }}
-        </h3>
-        <p class="text-sm text-muted-foreground">Автор: {{ book.author }}</p>
-        <p class="flex flex-wrap gap-1 items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-presentation w-4 h-4"
-          >
-            <path d="M2 3h20"></path>
-            <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"></path>
-            <path d="m7 21 5-5 5 5"></path></svg
-          >Кол-во стр: {{ book.pages }}
-        </p>
-      </div>
-      <div class="flex p-6 pt-0 flex-1 items-end">
-        <a
-          [href]="book.link"
-          class="inline-flex items-center justify-center text-white bg-[#020817] text-sm font-medium h-11 rounded-md px-8 w-full"
-          >Перейти в книгу</a
-        >
-      </div>
+        <div class="flex flex-col space-y-1.5 p-6">
+            <h3 class="text-2xl font-semibold leading-none tracking-tight">
+              {{ book.title }}
+            </h3>
+            <p class="text-sm text-muted-foreground">Автор: {{ book.author }} </p>
+            <p class="flex flex-wrap gap-1 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                class="lucide lucide-presentation w-4 h-4"
+                >
+                <path d="M2 3h20"></path>
+                <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"></path>
+                <path d="m7 21 5-5 5 5"></path>
+                </svg>Кол-во стр: {{ book.pages }}
+            </p>
+        </div>
+        <div 
+        class="flex p-6 pt-0 flex-1 items-end">
+        <a [href]="book.link"  class="inline-flex items-center justify-center text-white bg-[#020817] text-sm font-medium h-11 rounded-md px-8 w-full" 
+        >Перейти в книгу</a></div>
     </div>
   </div>
 </div>
