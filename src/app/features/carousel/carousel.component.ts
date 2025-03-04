@@ -15,13 +15,13 @@ export class CarouselComponent implements OnInit {
     {
       name: 'Mirvohid Azimov',
       position: 'Software Engineer Intern @ Yandex',
-      text: 'I\'m starting a new book as a Software Engineer Intern at Yandex! ...',
+      text: 'I\'m starting a path as a Software Engineer Intern at Yandex! ...',
       image: '../../../assets/img/azimjon.jpg'
     },
     {
       name: 'Sandra Newman',
       position: 'STEP Intern @ Google',
-      text: 'I\'m so excited to announce that I\'m joining Google books as a STEP Intern...',
+      text: 'I\'m so excited to announce that I\'m joining Google dev as a STEP Intern...',
       image: 'https://s26162.pcdn.co/wp-content/uploads/2019/05/sandra-newman-c-george-baier-color-600x600.jpg'
     },
   ];
