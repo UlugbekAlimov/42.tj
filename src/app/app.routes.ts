@@ -4,6 +4,7 @@ import { CoursesComponent } from './page/courses/courses.component';
 import { CourseInfoComponent } from './page/course-info/course-info.component';
 import { AboutCourseComponent } from './page/about-course/about-course.component';
 import { MentorsComponent } from './page/mentors/mentors.component';
+import { FaqComponent } from './page/faq/faq.component';
 
 export const routes: Routes = [
     { path:'', component:MainPageComponent },
@@ -11,4 +12,5 @@ export const routes: Routes = [
     { path:'courses-info', component: CourseInfoComponent },
     { path:'about-course', component: AboutCourseComponent },
     { path:'mentors', component: MentorsComponent },
+    { path:'faq', component: FaqComponent }
 ];

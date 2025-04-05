@@ -18,7 +18,7 @@
             <h3 class="text-2xl font-semibold leading-none tracking-tight">
               {{ book.title }}
             </h3>
-            <p class="text-sm text-muted-foreground">Автор: {{ book.author }} </p>
+            <p class="text-sm text-muted-foreground">Ментор: {{ book.author }} </p>
             <p class="flex flex-wrap gap-1 items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24"
                 height="24" 
@@ -33,13 +33,13 @@
                 <path d="M2 3h20"></path>
                 <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"></path>
                 <path d="m7 21 5-5 5 5"></path>
-                </svg>Кол-во стр: {{ book.pages }}
+                </svg>Кол-во мест: {{ book.duration }}
             </p>
         </div>
-        <div 
+        <!-- <div 
         class="flex p-6 pt-0 flex-1 items-end">
         <a [href]="book.link"  class="inline-flex items-center justify-center text-white bg-[#020817] text-sm font-medium h-11 rounded-md px-8 w-full" 
-        >Перейти в книгу</a></div>
+        >П</a></div> -->
     </div>
   </div>
 </div>

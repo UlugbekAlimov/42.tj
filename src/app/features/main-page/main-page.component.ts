@@ -5,6 +5,7 @@ import { TeamComponent } from '../team/team.component';
 import { StudentsComponent } from '../students/students.component';
 import { CarouselComponent } from '../carousel/carousel.component';
 import { InterstsComponent } from '../intersts/intersts.component';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -16,6 +17,7 @@ import { InterstsComponent } from '../intersts/intersts.component';
     StudentsComponent,
     CarouselComponent,
     InterstsComponent,
+    RouterLink
   ],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss'
@@ -23,7 +25,7 @@ import { InterstsComponent } from '../intersts/intersts.component';
 export class MainPageComponent {
   text1: string = "Фронтенд";
   text2: string = "Бекенд";
-  text3: string = "Мобайл";
+  text3: string = "Языковые";
   displayedText: string = "";
   index: number = 0;
   textIndex: number = 0;

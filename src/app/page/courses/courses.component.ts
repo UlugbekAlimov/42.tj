@@ -12,25 +12,26 @@ import { RouterModule } from '@angular/router';
 export class CoursesComponent {
   books = [
     {
-      title: 'Читать Основы бекенд',
+      title: 'Основы Python',
       author: 'Азимчон',
-      pages: 32,
+      duration : '15',
       image: '../../../assets/img/Thumbnail-2.png',
       link: '#'
     },
     {
-      title: 'Node.js и Express',
-      author: 'Иван Иванов',
-      pages: 220,
-      image: '../../../assets/img/thumb-exp-ux2x_XzL9BUr.png',
+      title: 'Основы Frontend',
+      author: 'Улугбек',
+      duration : '15',
+      image: '../../../assets/img/Thumbnail-2.png',
       link: '#'
     },
     {
-      title: 'Алгоритмы',
-      author: 'Петр Петров',
-      pages: 150,
-      image: '../../../assets/img/Thumbnail_JK75iA5.png',
+      title: 'Английский язык',
+      author: 'Хусниддин',
+      duration : '15',
+      image: '../../../assets/img/Thumbnail-2.png',
       link: '#'
     },
+
   ];
 }
