@@ -13,7 +13,9 @@
         <a class="menu_nav" href="/faq">FAQ</a>
       </div>
       <div class="flex items-center gap-2">
-
+        <div (click)="switchLangToggle()" class="cursor-pointer hover:bg-gray-100 p-2 rounded-md flex transition-all duration-200">
+          <span class="mr-2">{{ langButtonLabel }}</span><img src="../../../assets/svg/global-fill.svg" width="24" alt="">
+        </div>
         <button
           (click)="menuOpen = !menuOpen"
           class="inline-flex items-center justify-center rounded-md text-sm font-medium hover:bg-gray-100 transition-all duration-200 h-10 w-10 outline-none"

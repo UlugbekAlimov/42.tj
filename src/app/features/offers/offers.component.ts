@@ -13,18 +13,18 @@ export class OffersComponent {
   cards = [
     {
       image: '../../../assets/svg/interactive.svg',
-      title: 'Интерактивное программирование',
-      description: 'Читайте книги по программированию и получайте знания',
+      title: 'Интерактивное занятие',
+      description: 'Изучайте что то новое каждый день и получайте знания.',
     },
     {
       image: '../../../assets/svg/books.svg',
-      title: 'Программирование высокого качества',
-      description: 'Читайте интересные книги',
+      title: 'Книги высокого качества',
+      description: 'текст.',
     },
     {
       image: '../../../assets/svg/mix.svg',
-      title: 'Возможность перекрестного обучения',
-      description: 'Читайте книги в любом жанре',
+      title: 'Возможность обучения кодингом',
+      description: 'Изучайте основы программирования и станьте программистом',
     },
     {
       image: '../../../assets/svg/backend.svg',
@@ -38,8 +38,8 @@ export class OffersComponent {
     },
     {
       image: '../../../assets/svg/mobile.svg',
-      title: 'Программирование по основам разработки',
-      description: 'Изучите основы мобайл разработки',
+      title: 'Приложение для вашего английского',
+      description: 'Изучайте английский с помощью приложение',
     },
   ];
 }

@@ -5,8 +5,8 @@ import { TeamComponent } from '../team/team.component';
 import { StudentsComponent } from '../students/students.component';
 import { CarouselComponent } from '../carousel/carousel.component';
 import { InterstsComponent } from '../intersts/intersts.component';
-import { RouterLink, RouterModule } from '@angular/router';
-
+import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-main-page',
   standalone: true,
@@ -17,7 +17,8 @@ import { RouterLink, RouterModule } from '@angular/router';
     StudentsComponent,
     CarouselComponent,
     InterstsComponent,
-    RouterLink
+    RouterLink,
+    TranslateModule,
   ],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss'
@@ -34,10 +35,8 @@ export class MainPageComponent {
   ngOnInit(): void {
     this.type();
   }
-  
   type() {
     const currentText = this.texts[this.textIndex];
-  
     if (this.index < currentText.length) {
       this.displayedText += currentText.charAt(this.index);
       this.index++;
@@ -48,10 +47,9 @@ export class MainPageComponent {
       }, 500);
     }
   }
-  
+
   erase() {
     const currentText = this.texts[this.textIndex];
-  
     if (this.index > 0) {
       this.displayedText = currentText.substring(0, this.index - 1);
       this.index--;
