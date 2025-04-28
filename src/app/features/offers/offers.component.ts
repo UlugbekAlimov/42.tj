@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-offers',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, TranslateModule],
   templateUrl: './offers.component.html',
   styleUrl: './offers.component.scss',
 })
@@ -13,33 +14,33 @@ export class OffersComponent {
   cards = [
     {
       image: '../../../assets/svg/interactive.svg',
-      title: 'Интерактивное занятие',
-      description: 'Изучайте что то новое каждый день и получайте знания.',
+      title: 'offers.interactive',
+      description: 'offers.interDesc',
     },
     {
       image: '../../../assets/svg/books.svg',
-      title: 'Книги высокого качества',
-      description: 'текст.',
+      title: 'offers.books',
+      description: 'offers.booksDesc',
     },
     {
       image: '../../../assets/svg/mix.svg',
-      title: 'Возможность обучения кодингом',
-      description: 'Изучайте основы программирования и станьте программистом',
+      title: 'offers.codeLearn',
+      description: 'offers.codeLearnDesc',
     },
     {
       image: '../../../assets/svg/backend.svg',
-      title: 'Программирование по основам бэкэнда',
-      description: 'Изучите основы бэкэнда',
+      title: 'offers.backend',
+      description: 'offers.backendDesc',
     },
     {
       image: '../../../assets/svg/frontend.svg',
-      title: 'Программирование по основам Фронтенд',
-      description: 'Изучите основы фронтенда',
+      title: 'offers.frontend',
+      description: 'offers.frontendDesc',
     },
     {
       image: '../../../assets/svg/mobile.svg',
-      title: 'Приложение для вашего английского',
-      description: 'Изучайте английский с помощью приложение',
+      title: 'offers.languageApp',
+      description: 'offers.languageAppDesc',
     },
-  ];
+  ];  
 }

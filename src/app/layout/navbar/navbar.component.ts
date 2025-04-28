@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit{
   menuOpen: boolean = false
   isLanguageMenuOpen = false; 
   langButtonLabel: string = ' ТЧ'
-  currentLangValue: string = 'ru';
+  currentLangValue: string = 'tj';
 
   
   constructor(public langSerivce: LanguageService) {}

@@ -3,19 +3,23 @@
     class="p-6 md:p-12 pb-0 md:pb-0 shadow-sm bg-gray-100 rounded-md flex items-start md:items-end flex-col md:flex-row gap-4 justify-between min-h-64"
   >
     <div class="flex flex-col gap-4 pb-12 w-full">
-      <h2 class="text-4xl md:text-5xl lg:text-7xl text-start font-bold">
-        <span class="block sm:inline-block">{{ "home.title1" | translate }}
+      <h2 class="text-3xl md:text-5xl lg:text-7xl text-start font-bold">
+        <span class="block sm:inline-block"
+          >{{ "mainPage.title1" | translate }}
           <span class="underline">
             <span [innerHTML]="displayedText"></span>
           </span>
         </span>
         <br class="hidden sm:inline-block" />
-        в ICD.
+        {{ "mainPage.title2" | translate }}
       </h2>
       <p class="text-base sm:text-lg lg:text-xl">
-        Погружитесь в мир знания.
+        {{ "mainPage.subtitle" | translate }}
       </p>
-      <div routerLink="/courses" class="flex cursor-pointer flex-col md:flex-row items-start gap-2">
+      <div
+        routerLink="/courses"
+        class="flex cursor-pointer flex-col md:flex-row items-start gap-2"
+      >
         <a
           class="inline-flex text-white items-center justify-center text-lg sm:text-xl lg:text-2xl lg:p-4 p-3 rounded-md font-medium bg-[#0f172a] hover:bg-[#292b32]"
         >
@@ -24,9 +28,8 @@
             loading="lazy"
             src="../../../assets/img/thunder.gif"
             alt=""
-            
           />
-          Присоединиться
+          {{ "mainPage.join" | translate }}
         </a>
       </div>
     </div>
