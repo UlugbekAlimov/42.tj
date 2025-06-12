@@ -11,9 +11,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     RouterOutlet,
     NavbarComponent,
-    MainPageComponent,
     FooterComponent,
-    
     CommonModule
   ],
   templateUrl: './app.component.html',
@@ -23,5 +21,8 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   constructor( private router: Router ){}
 
+  get hideLayout():boolean {
+    return this.router.url === '/table'
+  }
 
 }

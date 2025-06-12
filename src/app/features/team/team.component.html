@@ -1,138 +1,77 @@
-<section class="space-y-6 pt-36">
+<section class="space-y-6 py-24 rounded-3xl bg-gray-100">
   <div class="mx-auto flex flex-col items-center leading-[1.1] text-center">
     <h2 class="font-semibold text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-      Команда
+      Записаться на бесплатное занятие
     </h2>
     <p
       class="max-w-[85%] leading-normal sm:text-lg sm:leading-7 text-gray-600 font-semibold pt-5"
     >
-    Учитесь у экспертами, которые обладают реальным опытом.
+      Развивайте свою речь и общайтесь с носителями языка абсолютно бесплатно
     </p>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+  <div class="flex justify-center items-center gap-4 mt-4">
     <div
-      class="card"
+      (click)="openCardModal()"
+      class="p-4 border px-16 rounded-xl bg-[#0f172a] hover:bg-[#292b32]"
     >
-      <div class="card_img">
-        <img
-          width="120"
-          height="120"
-          loading="lazy"
-          decoding="async"
-          class="rounded-full"
-          src="https://s26162.pcdn.co/wp-content/uploads/2019/05/19680.jpg"
-          alt="member"
-        />
-        <h3 class="card_text">
-          Cormac McCarthy
-          <a class="inline-block ml-2" href="/"
-            ><img
-              width="16"
-              height="16"
-              src="../../../assets/svg/linkedin.svg"
-              alt=""
-          /></a>
-        </h3>
-        <p class="text-sm text-gray-600">Автор</p>
-      </div>
-      <div class="card_company_logo">
-        <img width="120" height="24" loading="lazy" decoding="async" class="h-8 object-contain" src="../../../assets/img/google.png" alt="Google">
-        <img width="120" height="24" loading="lazy" decoding="async" class="h-8 object-contain" src="../../../assets/img/amazon.png" alt="Google">
-        <img width="120" height="24" loading="lazy" decoding="async" class="h-8 object-contain" src="../../../assets/img/meta.png" alt="Google">
-      </div>
-    </div>
-    <div
-      class="card"
-    >
-      <div class="card_img">
-        <img
-          width="120"
-          height="120"
-          loading="lazy"
-          decoding="async"
-          class="rounded-full"
-          src="https://s26162.pcdn.co/wp-content/uploads/2019/05/Screen-Shot-2019-05-01-at-12.45.33-PM-600x600.png"
-          alt="member"
-        />
-        <h3 class="card_text">
-          Jim Harrison 
-          <a class="inline-block ml-2" href="/"
-            ><img
-              width="16"
-              height="16"
-              src="../../../assets/svg/linkedin.svg"
-              alt=""
-          /></a>
-        </h3>
-       <p class="text-sm text-gray-600">Автор</p>
-      </div>
-      <div class="card_company_logo">
-        <img width="120" height="24" loading="lazy" decoding="async" class="h-8 object-contain" src="../../../assets/img/google.png" alt="Google">
-        <img width="120" height="24" loading="lazy" decoding="async" class="h-8 object-contain" src="../../../assets/img/amazon.png" alt="Google">
-        <img width="120" height="24" loading="lazy" decoding="async" class="h-8 object-contain" src="../../../assets/img/meta.png" alt="Google">
-      </div>
-    </div>
-    <div
-      class="card"
-    >
-      <div class="card_img">
-        <img
-          width="120"
-          height="120"
-          loading="lazy"
-          decoding="async"
-          class="rounded-full"
-          src="https://s26162.pcdn.co/wp-content/uploads/2019/05/sally_rooney_photo_by_jonny_l._davies_no._2-768x719.jpg"
-          alt="member"
-        />
-        <h3 class="card_text">
-          Sally Rooney 
-          <a class="inline-block ml-2" href="/"
-            ><img
-              width="16"
-              height="16"
-              src="../../../assets/svg/linkedin.svg"
-              alt=""
-          /></a>
-        </h3>
-        <p class="text-sm text-gray-600">Автор</p>
-      </div>
-      <div class="card_company_logo">
-        <img width="120" height="24" loading="lazy" decoding="async" class="h-8 object-contain" src="../../../assets/img/google.png" alt="Google">
-        <img width="120" height="24" loading="lazy" decoding="async" class="h-8 object-contain" src="../../../assets/img/amazon.png" alt="Google">
-        <img width="120" height="24" loading="lazy" decoding="async" class="h-8 object-contain" src="../../../assets/img/meta.png" alt="Google">
-      </div>
-    </div>
-    <div
-      class="card"
-    >
-      <div class="card_img">
-        <img
-          width="120"
-          height="120"
-          loading="lazy"
-          decoding="async"
-          class="rounded-full"
-          src="https://s26162.pcdn.co/wp-content/uploads/2019/05/Screen-Shot-2019-05-02-at-11.32.48-AM.png"
-          alt="member"
-        />
-        <h3 class="card_text">
-          Oyinkan Braithwaite
-          <a class="inline-block ml-2" href="/"
-            ><img
-              width="16"
-              height="16"
-              src="../../../assets/svg/linkedin.svg"
-              alt=""
-          /></a>
-        </h3>
-        <p class="text-sm text-gray-600">Автор</p>
-      </div>
-      <div class="card_company_logo">
-        <img width="120" height="24" loading="lazy" decoding="async" class="h-8 object-contain" src="../../../assets/img/google.png" alt="Google">
-        <img width="120" height="24" loading="lazy" decoding="async" class="h-8 object-contain" src="../../../assets/img/amazon.png" alt="Google">
-        <img width="120" height="24" loading="lazy" decoding="async" class="h-8 object-contain" src="../../../assets/img/meta.png" alt="Google">
-      </div>
+      <button class="text-white font-medium">Оставить заявку</button>
     </div>
   </div>
 </section>
+
+<app-custom-modal
+  [visible]="isModalOpen"
+  [actionText]="'Закрыть'"
+  (closed)="closeCardModal()"
+>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="text-start py-2">
+    <h1 class="text-xl text-[#374151] font-semibold mb-3">Записаться на курсы</h1>
+    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
+      ФИО
+    </label>
+    <input
+      type="text"
+      formControlName="fullName"
+      placeholder="Введите фио"
+      class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm 
+      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800"
+    />
+    <label for="name" class="block text-sm font-medium text-gray-700 mb-1 mt-3">
+      Тел номер
+    </label>
+    <input
+      type="tel"
+      formControlName="phone"
+      placeholder="Введите номер телефона"
+      class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none 
+      focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800"
+    />
+    <label for="name" class="block text-sm font-medium text-gray-700 mb-1 mt-3">
+      Выберите курс
+    </label>
+
+    <select
+      formControlName="course"
+      class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none 
+      focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800"
+    >
+      <option *ngFor="let course of courses" [value]="course.name">
+        {{ course.name }}
+      </option>
+    </select>
+    <div class="mt-6 text-right">
+      <button
+        type="submit"
+        class="text-white px-4 py-2 rounded bg-[#0f172a] hover:bg-[#292b32] mr-3"
+      >
+        Отправить
+      </button>
+      <button
+        (click)="close()"
+        class="text-white px-4 py-2 rounded bg-[#0f172a] hover:bg-[#292b32]"
+      >
+        Закрыть
+      </button>
+    </div>
+  </form>
+</app-custom-modal>

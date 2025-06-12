@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar *ngIf="!hideLayout"></app-navbar>
 
 <div class="global-container">
   <div class="global-height">
@@ -6,5 +6,5 @@
   </div>
 </div>
 
-<hr class="border">
-<app-footer ></app-footer>
+<hr *ngIf="!hideLayout" class="border">
+<app-footer *ngIf="!hideLayout"></app-footer>

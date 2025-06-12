@@ -13,7 +13,7 @@ export class MentorsComponent {
     {
       authTitle: 'Roxane Payson',
       image: 'https://s26162.pcdn.co/wp-content/uploads/2019/05/roxane-gay.jpg',
-      genre:'Роман'
+      genre:'Английский '
     },
     {
       authTitle: 'Kiran Desai',

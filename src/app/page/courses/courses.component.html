@@ -1,45 +1,108 @@
-<div class="mt-5 pb-6 flex flex-col space-y-10">
-  <div>
-    <h2 class="text-3xl font-bold pt-8">Курсы</h2>
+<div class="p-4 md:p-8 max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center py-12">
+    <div>
+      <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0 mb-6">
 
-      </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <div 
-    *ngFor="let book of books" 
-    class="rounded-lg border shadow-sm flex flex-col">
-      <img
-        [alt]="book.title"
-        [src]="book.image"
-        width="400"
-        height="225"
-        class="rounded-t-md w-full object-cover"
-      />
-        <div class="flex flex-col space-y-1.5 p-6">
-            <h3 class="text-2xl font-semibold leading-none tracking-tight">
-              {{ book.title }}
-            </h3>
-            <p class="text-sm text-muted-foreground">Ментор: {{ book.author }} </p>
-            <p class="flex flex-wrap gap-1 items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                stroke-width="2" 
-                stroke-linecap="round" 
-                stroke-linejoin="round" 
-                class="lucide lucide-presentation w-4 h-4"
-                >
-                <path d="M2 3h20"></path>
-                <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"></path>
-                <path d="m7 21 5-5 5 5"></path>
-                </svg>Кол-во мест: {{ book.duration }}
-            </p>
+        <!-- Языковые курсы с дропдауном -->
+        <div class="relative" style="min-width: 220px;">
+          <button
+            class="px-4 py-2 font-bold shadow-md text-sm sm:text-base flex items-center justify-between w-full bg-gray-100 rounded-md hover:bg-gray-200"
+            [ngClass]="{
+              'bg-gray-800 text-white': activeTab === 'language',
+              'bg-gray-100 text-gray-800': activeTab !== 'language'
+            }"
+            (click)="activeTab = 'language'; isDropdownOpen = !isDropdownOpen"
+          >
+            {{ selectedLanguage }} (Языковые курсы)
+            <svg
+              class="ml-2 w-4 h-4 transition-transform"
+              [ngClass]="{ 'rotate-180': isDropdownOpen }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <ul
+            *ngIf="isDropdownOpen"
+            class="absolute z-10 bg-white border border-gray-300 rounded-md mt-1 w-full shadow-md max-h-60 overflow-auto"
+          >
+            <li
+              *ngFor="let lang of languages"
+              (click)="selectLanguage(lang)"
+              class="px-4 py-2 cursor-pointer hover:bg-gray-200"
+              [class.font-bold]="lang === selectedLanguage"
+            >
+              {{ lang }}
+            </li>
+          </ul>
         </div>
-        <!-- <div 
-        class="flex p-6 pt-0 flex-1 items-end">
-        <a [href]="book.link"  class="inline-flex items-center justify-center text-white bg-[#020817] text-sm font-medium h-11 rounded-md px-8 w-full" 
-        >П</a></div> -->
+
+        <!-- Кнопка Frontend -->
+        <button
+          class="px-4 py-2 font-bold shadow-md text-sm sm:text-base"
+          [ngClass]="{
+            'bg-gray-800 text-white': activeTab === 'frontend',
+            'bg-gray-100 text-gray-800': activeTab !== 'frontend'
+          }"
+          (click)="activeTab = 'frontend'; isDropdownOpen = false"
+        >
+          Frontend
+        </button>
+
+        <!-- Кнопка Backend -->
+        <button
+          class="px-4 py-2 font-bold shadow-md text-sm sm:text-base"
+          [ngClass]="{
+            'bg-gray-800 text-white': activeTab === 'backend',
+            'bg-gray-100 text-gray-800': activeTab !== 'backend'
+          }"
+          (click)="activeTab = 'backend'; isDropdownOpen = false"
+        >
+          Backend
+        </button>
+      </div>
+
+      <!-- Информация о курсе -->
+      <ul class="space-y-3 mb-4 text-sm sm:text-base text-gray-800">
+        <li
+          class="flex items-center"
+          *ngFor="let item of tabs[activeTab].items"
+        >
+          <span class="text-yellow-400">●</span>
+          <span class="ml-2">{{ item }}</span>
+        </li>
+      </ul>
+
+      <div class="mb-2 text-sm sm:text-base font-bold">
+        <span class="text-gray-700">Цена:</span>
+        <span class="text-gray-900 text-xl sm:text-2xl font-extrabold">
+          {{ tabs[activeTab].price }}
+        </span>
+      </div>
+      <p class="text-xs sm:text-sm text-gray-600 mb-4">
+        {{ tabs[activeTab].note }}
+      </p>
+
+      <button
+        [routerLink]="['/']"
+        fragment="team"
+        class="bg-[#0f172a] hover:bg-[#292b32] text-white font-bold py-2 sm:py-3 px-4 sm:px-6 w-full rounded-md shadow-md text-sm sm:text-base"
+      >
+        ЗАПИСАТЬСЯ
+      </button>
+    </div>
+
+    <div class="rounded-lg overflow-hidden shadow-md">
+      <img
+        [src]="tabs[activeTab].image"
+        alt="Course"
+        class="w-full h-auto object-cover max-h-[300px] sm:max-h-full"
+      />
     </div>
   </div>
 </div>

@@ -1,33 +1,55 @@
 import { Component, OnDestroy } from '@angular/core';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { OffersComponent } from "../offers/offers.component";
-import { StatisticsComponent } from "../statistics/statistics.component";
-import { TeamComponent } from "../team/team.component";
-import { StudentsComponent } from "../students/students.component";
-import { CarouselComponent } from "../carousel/carousel.component";
-import { InterstsComponent } from "../intersts/intersts.component";
+import { OffersComponent } from '../offers/offers.component';
+import { StatisticsComponent } from '../statistics/statistics.component';
+import { TeamComponent } from '../team/team.component';
+import { StudentsComponent } from '../students/students.component';
+import { CarouselComponent } from '../carousel/carousel.component';
+import { InterstsComponent } from '../intersts/intersts.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
   standalone: true,
-  imports: [TranslateModule, OffersComponent, StatisticsComponent, TeamComponent, StudentsComponent, CarouselComponent, InterstsComponent],
+  imports: [
+    TranslateModule,
+    OffersComponent,
+    StatisticsComponent,
+    TeamComponent,
+    StudentsComponent,
+    CarouselComponent,
+    InterstsComponent,
+  ],
   templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.scss']
+  styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements OnDestroy {
-  displayedText: string = "";
+  displayedText: string = '';
   private index: number = 0;
   private textIndex: number = 0;
   private texts: string[] = [];
   private translateSub!: Subscription;
   private animationTimeout: any;
 
-  constructor(private translate: TranslateService) {}
+  constructor(
+    private translate: TranslateService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.route.fragment.subscribe((fragment) => {
+      if (fragment) {
+        setTimeout(() => {
+          const el = document.getElementById(fragment);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100); 
+      }
+    });
+
     this.setupTranslation();
-    // Подписываемся на изменения языка
     this.translate.onLangChange.subscribe(() => {
       this.resetAnimation();
       this.setupTranslation();
@@ -38,12 +60,14 @@ export class MainPageComponent implements OnDestroy {
     if (this.translateSub) {
       this.translateSub.unsubscribe();
     }
-    
-    this.translateSub = this.translate.get('mainPage.specializations').subscribe((translated: string[]) => {
-      this.texts = translated;
-      this.resetAnimation();
-      this.type();
-    });
+
+    this.translateSub = this.translate
+      .get('mainPage.specializations')
+      .subscribe((translated: string[]) => {
+        this.texts = translated;
+        this.resetAnimation();
+        this.type();
+      });
   }
 
   private type(): void {
@@ -77,7 +101,7 @@ export class MainPageComponent implements OnDestroy {
     if (this.animationTimeout) {
       clearTimeout(this.animationTimeout);
     }
-    this.displayedText = "";
+    this.displayedText = '';
     this.index = 0;
     this.textIndex = 0;
   }
