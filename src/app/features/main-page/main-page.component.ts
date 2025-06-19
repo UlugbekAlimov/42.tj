@@ -8,6 +8,7 @@ import { StudentsComponent } from '../students/students.component';
 import { CarouselComponent } from '../carousel/carousel.component';
 import { InterstsComponent } from '../intersts/intersts.component';
 import { ActivatedRoute } from '@angular/router';
+import { RegistrationFormComponent } from './registration-form.component';
 
 @Component({
   selector: 'app-main-page',
@@ -20,6 +21,7 @@ import { ActivatedRoute } from '@angular/router';
     StudentsComponent,
     CarouselComponent,
     InterstsComponent,
+    RegistrationFormComponent,
   ],
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
@@ -45,7 +47,7 @@ export class MainPageComponent implements OnDestroy {
           if (el) {
             el.scrollIntoView({ behavior: 'smooth' });
           }
-        }, 100); 
+        }, 100);
       }
     });
 

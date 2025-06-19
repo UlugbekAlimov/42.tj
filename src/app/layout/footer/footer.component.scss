@@ -1,3 +1,16 @@
 .gray-hover {
   @apply transition-all duration-300 ease-in-out
 }
+
+@keyframes slide {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-slide {
+  animation: slide 25s linear infinite;
+}

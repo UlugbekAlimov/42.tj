@@ -1,12 +1,12 @@
 <section class="space-y-6 py-24 rounded-3xl bg-gray-100">
   <div class="mx-auto flex flex-col items-center leading-[1.1] text-center">
     <h2 class="font-semibold text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-      Записаться на бесплатное занятие
+      {{ "team.freeLesson" | translate }}
     </h2>
     <p
       class="max-w-[85%] leading-normal sm:text-lg sm:leading-7 text-gray-600 font-semibold pt-5"
     >
-      Развивайте свою речь и общайтесь с носителями языка абсолютно бесплатно
+      {{ "team.speakFree" | translate }}
     </p>
   </div>
   <div class="flex justify-center items-center gap-4 mt-4">
@@ -14,46 +14,47 @@
       (click)="openCardModal()"
       class="p-4 border px-16 rounded-xl bg-[#0f172a] hover:bg-[#292b32]"
     >
-      <button class="text-white font-medium">Оставить заявку</button>
+      <button class="text-white font-medium">
+        {{ "team.submitRequest" | translate }}
+      </button>
     </div>
   </div>
 </section>
 
 <app-custom-modal
   [visible]="isModalOpen"
-  [actionText]="'Закрыть'"
+  [actionText]="'common.close' | translate"
   (closed)="closeCardModal()"
 >
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="text-start py-2">
-    <h1 class="text-xl text-[#374151] font-semibold mb-3">Записаться на курсы</h1>
+    <h1 class="text-xl text-[#374151] font-semibold mb-3">
+      {{ "registrationForm.title" | translate }}
+    </h1>
     <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
-      ФИО
+      {{ "registrationForm.fullName" | translate }}
     </label>
     <input
       type="text"
       formControlName="fullName"
-      placeholder="Введите фио"
-      class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm 
-      focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800"
+      [placeholder]="'registrationForm.fullNamePlaceholder' | translate"
+      class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800"
     />
     <label for="name" class="block text-sm font-medium text-gray-700 mb-1 mt-3">
-      Тел номер
+      {{ "registrationForm.phone" | translate }}
     </label>
     <input
       type="tel"
       formControlName="phone"
-      placeholder="Введите номер телефона"
-      class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none 
-      focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800"
+      [placeholder]="'registrationForm.phonePlaceholder' | translate"
+      class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800"
     />
     <label for="name" class="block text-sm font-medium text-gray-700 mb-1 mt-3">
-      Выберите курс
+      {{ "registrationForm.selectCourse" | translate }}
     </label>
 
     <select
       formControlName="course"
-      class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none 
-      focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800"
+      class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800"
     >
       <option *ngFor="let course of courses" [value]="course.name">
         {{ course.name }}
@@ -64,13 +65,7 @@
         type="submit"
         class="text-white px-4 py-2 rounded bg-[#0f172a] hover:bg-[#292b32] mr-3"
       >
-        Отправить
-      </button>
-      <button
-        (click)="close()"
-        class="text-white px-4 py-2 rounded bg-[#0f172a] hover:bg-[#292b32]"
-      >
-        Закрыть
+        {{ "registrationForm.submit" | translate }}
       </button>
     </div>
   </form>

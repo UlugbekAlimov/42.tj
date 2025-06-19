@@ -2,39 +2,54 @@
   <section
     class="relative p-6 md:p-12 pb-0 md:pb-0 shadow-sm bg-gray-100 rounded-md flex items-start md:items-end flex-col md:flex-row gap-4 justify-between min-h-64 overflow-hidden"
   >
-    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-[3px]"
-      style="background-image: url(../../../assets/img/Англ_для_детей.jpg); z-index: 0; filter: brightness(0.5);">
-    </div>
+    <div
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-[3px]"
+      style="
+        background-image: url(../../../assets/img/Англ_для_детей.jpg);
+        z-index: 0;
+        filter: brightness(0.5);
+      "
+    ></div>
 
-    <div class="flex flex-col gap-4 pb-12 w-full relative z-[1]">
-      <h2 class="text-3xl text-white md:text-5xl lg:text-[70px] text-start font-bold">
-        <span class="block sm:inline-block">
-          {{ "mainPage.title1" | translate }}
-          <span class="underline">
-            <span [innerHTML]="displayedText"></span>
-          </span>
-        </span>
-        <br class="hidden sm:inline-block" />
-        {{ "mainPage.title2" | translate }}
-      </h2>
-      <p class="text-base text-white sm:text-lg lg:text-xl">
-        {{ "mainPage.subtitle" | translate }}
-      </p> 
-      <div
-        routerLink="/courses"
-        class="flex cursor-pointer flex-col md:flex-row items-start gap-2"
-      >
-        <a
-          class="inline-flex text-white items-center justify-center text-lg sm:text-xl lg:text-2xl lg:p-4 p-3 rounded-md font-medium bg-[#0f172a] hover:bg-[#292b32]"
+    <div
+      class="flex flex-col md:flex-row gap-8 w-full relative z-[1] items-center"
+    >
+      <div class="flex flex-col gap-4 pb-12 w-full md:w-1/2">
+        <h2
+          class="text-3xl text-white md:text-5xl lg:text-[70px] text-start font-bold"
         >
-          <img
-            width="24"
-            loading="lazy"
-            src="../../../assets/img/thunder.gif"
-            alt=""
-          />
-          {{ "mainPage.join" | translate }}
-        </a>
+          <span class="block sm:inline-block">
+            <!-- {{ "mainPage.title1" | translate }} -->
+            <span class="underline">
+              <span>{{ "mainPage.grow" | translate }}</span>
+              {{ "mainPage.title2" | translate }}
+            </span>
+          </span>
+        </h2>
+        <p class="text-base text-white sm:text-lg lg:text-xl">
+          {{ "mainPage.subtitle" | translate }}
+        </p>
+        <div
+          routerLink="/courses"
+          class="flex cursor-pointer flex-col md:flex-row items-start gap-2"
+        >
+          <a
+            class="inline-flex text-white items-center justify-center text-lg sm:text-xl lg:text-2xl lg:p-4 p-3 rounded-md font-medium bg-[#0f172a] hover:bg-[#292b32]"
+          >
+            <img
+              width="24"
+              loading="lazy"
+              src="../../../assets/img/thunder.gif"
+              alt=""
+            />
+            {{ "mainPage.join" | translate }}
+          </a>
+        </div>
+      </div>
+      <div
+        class="w-full md:w-1/2 flex sm:justify-end justify-center items-center"
+      >
+        <app-registration-form></app-registration-form>
       </div>
     </div>
 
@@ -50,9 +65,9 @@
 
 <app-offers></app-offers>
 <!-- <app-statistics></app-statistics> -->
- <div id="team">
-   <app-team></app-team>
- </div>
+<div id="team">
+  <app-team></app-team>
+</div>
 <app-students></app-students>
 <app-carousel></app-carousel>
 <app-intersts></app-intersts>

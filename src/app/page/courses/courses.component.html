@@ -1,10 +1,10 @@
 <div class="p-4 md:p-8 max-w-7xl mx-auto">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center py-12">
     <div>
-      <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0 mb-6">
-
-        <!-- Языковые курсы с дропдауном -->
-        <div class="relative" style="min-width: 220px;">
+      <div
+        class="flex flex-col sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0 mb-6"
+      >
+        <div class="relative" style="min-width: 220px">
           <button
             class="px-4 py-2 font-bold shadow-md text-sm sm:text-base flex items-center justify-between w-full bg-gray-100 rounded-md hover:bg-gray-200"
             [ngClass]="{
@@ -13,7 +13,8 @@
             }"
             (click)="activeTab = 'language'; isDropdownOpen = !isDropdownOpen"
           >
-            {{ selectedLanguage }} (Языковые курсы)
+            {{ languageCourses[selectedLanguage].title || selectedLanguage }}
+            ({{ "courses.langCourse" | translate }})
             <svg
               class="ml-2 w-4 h-4 transition-transform"
               [ngClass]="{ 'rotate-180': isDropdownOpen }"
@@ -22,8 +23,12 @@
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M19 9l-7 7-7-7" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
             </svg>
           </button>
 
@@ -37,7 +42,7 @@
               class="px-4 py-2 cursor-pointer hover:bg-gray-200"
               [class.font-bold]="lang === selectedLanguage"
             >
-              {{ lang }}
+              {{ languageCourses[lang].title || lang }}
             </li>
           </ul>
         </div>
@@ -51,7 +56,7 @@
           }"
           (click)="activeTab = 'frontend'; isDropdownOpen = false"
         >
-          Frontend
+          {{ tabs.frontend.title }}
         </button>
 
         <!-- Кнопка Backend -->
@@ -63,7 +68,7 @@
           }"
           (click)="activeTab = 'backend'; isDropdownOpen = false"
         >
-          Backend
+          {{ tabs.backend.title }}
         </button>
       </div>
 
@@ -79,7 +84,9 @@
       </ul>
 
       <div class="mb-2 text-sm sm:text-base font-bold">
-        <span class="text-gray-700">Цена:</span>
+        <span class="text-gray-700">
+          {{ "courses.priceTitle" | translate }}</span
+        >
         <span class="text-gray-900 text-xl sm:text-2xl font-extrabold">
           {{ tabs[activeTab].price }}
         </span>
@@ -93,15 +100,15 @@
         fragment="team"
         class="bg-[#0f172a] hover:bg-[#292b32] text-white font-bold py-2 sm:py-3 px-4 sm:px-6 w-full rounded-md shadow-md text-sm sm:text-base"
       >
-        ЗАПИСАТЬСЯ
+        {{ "courses.button" | translate }}
       </button>
     </div>
 
     <div class="rounded-lg overflow-hidden shadow-md">
       <img
         [src]="tabs[activeTab].image"
-        alt="Course"
-        class="w-full h-auto object-cover max-h-[300px] sm:max-h-full"
+        [alt]="tabs[activeTab].title"
+        class="w-full h-[300px] object-cover"
       />
     </div>
   </div>

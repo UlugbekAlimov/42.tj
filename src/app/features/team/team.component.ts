@@ -9,11 +9,17 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-team',
   standalone: true,
-  imports: [CustomModalComponent, CommonModule, ReactiveFormsModule],
+  imports: [
+    CustomModalComponent,
+    CommonModule,
+    ReactiveFormsModule,
+    TranslateModule,
+  ],
   templateUrl: './team.component.html',
   styleUrl: './team.component.scss',
 })
@@ -41,15 +47,14 @@ export class TeamComponent implements OnInit {
   }
 
   onSubmit() {
-    if ( this.form.valid ) {
+    if (this.form.valid) {
       this.apiService.sendUserInfo(this.form.value).subscribe({
-        next:(res) => {
-          console.log('data', res),
-          this.closeCardModal()
-          this.form.reset()
+        next: (res) => {
+          console.log('data', res), this.closeCardModal();
+          this.form.reset();
         },
-        error:(err) => console.log('error', err)
-      })
+        error: (err) => console.log('error', err),
+      });
     }
   }
 
