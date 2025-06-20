@@ -2,7 +2,7 @@
   <div class="container mx-auto max-w-[1230px]">
     <nav class="flex items-center justify-between" role="navigation" aria-label="Главная навигация">
       <a href="/" aria-label="Перейти на главную страницу ICD School">
-        <div class="flex cursor-auto items-center gap-2">
+        <div class="flex cursor-pointer items-center gap-2">
           <img class="w-[75px]" src="../../../assets/img/logo21.jpg" alt="Логотип ICD School - Intellectual Capital Development" />
           <div class="leading-none font-serif uppercase">
             <p>Intellectual</p>
@@ -12,8 +12,8 @@
         </div>
       </a>
       <div class="hidden md:flex gap-1" role="menubar">
-        <a class="menu_nav" routerLink="/" href="/" role="menuitem" aria-label="Главная страница">{{ "navbar.main" | translate }}</a>
-        <a class="menu_nav" routerLink="/courses" href="/" role="menuitem" aria-label="Курсы ICD School">{{ "navbar.course" | translate }}</a>
+        <a class="menu_nav" routerLink="/" role="menuitem" aria-label="Главная страница">{{ "navbar.main" | translate }}</a>
+        <a class="menu_nav" routerLink="/courses" role="menuitem" aria-label="Курсы ICD School">{{ "navbar.course" | translate }}</a>
         <a class="menu_nav" href="/mentors" role="menuitem" aria-label="Команда преподавателей">{{ "navbar.team" | translate }}</a>
         <a class="menu_nav" href="/aboutus" role="menuitem" aria-label="О нас - история ICD School">{{ "navbar.us" | translate }}</a>
         <a class="menu_nav" href="/faq" role="menuitem" aria-label="Часто задаваемые вопросы">{{ "navbar.faq" | translate }}</a>
@@ -66,7 +66,7 @@
           role="menu"
           aria-label="Мобильное меню"
         >
-          <a href="/" class="menu_a" role="menuitem" aria-label="Главная страница">
+          <a class="menu_a" role="menuitem" aria-label="Главная страница">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -85,7 +85,7 @@
             </svg>
             {{ "navbar.main" | translate }}
           </a>
-          <a href="/" class="menu_a" role="menuitem" aria-label="Курсы ICD School">
+          <a class="menu_a" role="menuitem" aria-label="Курсы ICD School">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -106,7 +106,7 @@
             </svg>
             {{ "navbar.course" | translate }}</a
           >
-          <a href="/" class="menu_a" role="menuitem" aria-label="Команда преподавателей">
+          <a class="menu_a" role="menuitem" aria-label="Команда преподавателей">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
