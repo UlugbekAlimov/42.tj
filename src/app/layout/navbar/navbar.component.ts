@@ -57,4 +57,19 @@ export class NavbarComponent implements OnInit{
     event.stopPropagation(); 
     this.isLanguageMenuOpen = !this.isLanguageMenuOpen;
   }
+
+  // Методы для улучшения доступности
+  onMenuKeydown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.toggleMenu();
+    }
+  }
+
+  onLangKeydown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.switchLangToggle();
+    }
+  }
 }

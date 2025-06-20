@@ -7,7 +7,7 @@ import { TeamComponent } from '../team/team.component';
 import { StudentsComponent } from '../students/students.component';
 import { CarouselComponent } from '../carousel/carousel.component';
 import { InterstsComponent } from '../intersts/intersts.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { RegistrationFormComponent } from './registration-form.component';
 
 @Component({
@@ -22,6 +22,7 @@ import { RegistrationFormComponent } from './registration-form.component';
     CarouselComponent,
     InterstsComponent,
     RegistrationFormComponent,
+    RouterLink
   ],
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],

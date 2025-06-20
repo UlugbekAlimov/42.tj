@@ -55,7 +55,6 @@ export class CoursesComponent {
           backend: res['courses.backendTab'],
         };
         this.selectedLanguage = this.languages[0];
-        console.log('Loaded translations:', this.tabs.language);
       });
   }
 
