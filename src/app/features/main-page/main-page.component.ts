@@ -9,6 +9,8 @@ import { CarouselComponent } from '../carousel/carousel.component';
 import { InterstsComponent } from '../intersts/intersts.component';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { RegistrationFormComponent } from './registration-form.component';
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-main-page',
@@ -22,7 +24,7 @@ import { RegistrationFormComponent } from './registration-form.component';
     CarouselComponent,
     InterstsComponent,
     RegistrationFormComponent,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
@@ -37,20 +39,23 @@ export class MainPageComponent implements OnDestroy {
 
   constructor(
     private translate: TranslateService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
-    this.route.fragment.subscribe((fragment) => {
-      if (fragment) {
-        setTimeout(() => {
-          const el = document.getElementById(fragment);
-          if (el) {
-            el.scrollIntoView({ behavior: 'smooth' });
-          }
-        }, 100);
-      }
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      this.route.fragment.subscribe((fragment) => {
+        if (fragment) {
+          setTimeout(() => {
+            const el = document.getElementById(fragment);
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 100);
+        }
+      });
+    }
 
     this.setupTranslation();
     this.translate.onLangChange.subscribe(() => {
@@ -69,7 +74,10 @@ export class MainPageComponent implements OnDestroy {
       .subscribe((translated: string[]) => {
         this.texts = translated;
         this.resetAnimation();
-        this.type();
+
+        if (isPlatformBrowser(this.platformId)) {
+          this.type();
+        }
       });
   }
 
@@ -100,8 +108,7 @@ export class MainPageComponent implements OnDestroy {
   }
 
   private resetAnimation(): void {
-    // Очищаем таймауты анимации
-    if (this.animationTimeout) {
+    if (isPlatformBrowser(this.platformId) && this.animationTimeout) {
       clearTimeout(this.animationTimeout);
     }
     this.displayedText = '';

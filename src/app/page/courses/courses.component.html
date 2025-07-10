@@ -13,7 +13,7 @@
             }"
             (click)="activeTab = 'language'; isDropdownOpen = !isDropdownOpen"
           >
-            {{ languageCourses[selectedLanguage].title || selectedLanguage }}
+            {{ languageCourses[selectedLanguage]?.title || selectedLanguage }}
             ({{ "courses.langCourse" | translate }})
             <svg
               class="ml-2 w-4 h-4 transition-transform"

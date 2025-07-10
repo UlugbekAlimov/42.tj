@@ -3,6 +3,8 @@ import { ApiService } from '../../core/api.service';
 import { CommonModule } from '@angular/common';
 import { CustomModalComponent } from '../../shared/custom-modal/custom-modal.component';
 import { FormsModule } from '@angular/forms';
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-stud-table',
@@ -12,8 +14,10 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './stud-table.component.scss',
 })
 export class StudTableComponent implements OnInit {
-  constructor(private apiService: ApiService) {}
-
+  constructor(
+    private apiService: ApiService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
   selectedStudentId: any;
   isDeleteModalOpen: boolean = false;
   students: any[] = [];
@@ -40,6 +44,8 @@ export class StudTableComponent implements OnInit {
   }
 
   downloadExcel(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
     this.apiService.getExcelAsBase64().subscribe({
       next: (res) => {
         const link = document.createElement('a');

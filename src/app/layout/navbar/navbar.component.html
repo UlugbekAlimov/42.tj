@@ -14,9 +14,9 @@
       <div class="hidden md:flex gap-1" role="menubar">
         <a class="menu_nav" routerLink="/" role="menuitem" aria-label="Главная страница">{{ "navbar.main" | translate }}</a>
         <a class="menu_nav" routerLink="/courses" role="menuitem" aria-label="Курсы ICD School">{{ "navbar.course" | translate }}</a>
-        <a class="menu_nav" href="/mentors" role="menuitem" aria-label="Команда преподавателей">{{ "navbar.team" | translate }}</a>
-        <a class="menu_nav" href="/aboutus" role="menuitem" aria-label="О нас - история ICD School">{{ "navbar.us" | translate }}</a>
-        <a class="menu_nav" href="/faq" role="menuitem" aria-label="Часто задаваемые вопросы">{{ "navbar.faq" | translate }}</a>
+        <a class="menu_nav" routerLink="/mentors" role="menuitem" aria-label="Команда преподавателей">{{ "navbar.team" | translate }}</a>
+        <a class="menu_nav" routerLink="/aboutus" role="menuitem" aria-label="О нас - история ICD School">{{ "navbar.us" | translate }}</a>
+        <a class="menu_nav" routerLink="/faq" role="menuitem" aria-label="Часто задаваемые вопросы">{{ "navbar.faq" | translate }}</a>
       </div>
       <div class="flex items-center gap-2">
         <div
@@ -66,7 +66,7 @@
           role="menu"
           aria-label="Мобильное меню"
         >
-          <a class="menu_a" role="menuitem" aria-label="Главная страница">
+          <a routerLink="/" class="menu_a" role="menuitem" aria-label="Главная страница">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -85,7 +85,7 @@
             </svg>
             {{ "navbar.main" | translate }}
           </a>
-          <a class="menu_a" role="menuitem" aria-label="Курсы ICD School">
+          <a routerLink="/courses" class="menu_a" role="menuitem" aria-label="Курсы ICD School">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -106,7 +106,7 @@
             </svg>
             {{ "navbar.course" | translate }}</a
           >
-          <a class="menu_a" role="menuitem" aria-label="Команда преподавателей">
+          <a routerLink="/mentors" class="menu_a" role="menuitem" aria-label="Команда преподавателей">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -129,6 +129,7 @@
           >
           <div class="relative group">
             <a
+              routerLink="/aboutus"
               class="flex items-center text-sm font-medium transition-all duration-200 px-[14px] py-2 hover:bg-gray-100"
               role="menuitem"
               aria-label="О нас - история ICD School"
@@ -151,6 +152,7 @@
           </div>
           <div class="relative group">
             <a
+              routerLink="/faq"
               class="flex items-center text-sm font-medium transition-all duration-200 px-[14px] py-2 hover:bg-gray-100"
               role="menuitem"
               aria-label="Часто задаваемые вопросы"
