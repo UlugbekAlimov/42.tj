@@ -21,8 +21,9 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   constructor( private router: Router ){}
 
-  get hideLayout():boolean {
-    return this.router.url === '/table'
+  get hideLayout(): boolean {
+    // Hide layout for '/table' and NotFoundComponent route (e.g., '/404')
+    return this.router.url === '/table' || this.router.url === '/404';
   }
 
 }

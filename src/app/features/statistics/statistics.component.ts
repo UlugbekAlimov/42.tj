@@ -7,7 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [CommonModule, TranslateModule],
   templateUrl: './statistics.component.html',
-  styleUrl: './statistics.component.scss'
+  styleUrl: './statistics.component.scss',
 })
 export class StatisticsComponent implements OnInit {
   counters = {
@@ -23,22 +23,25 @@ export class StatisticsComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.animateCounter('experienceCount', this.targets.experienceCount, 3000);
-    this.animateCounter('studentsCount', this.targets.studentsCount, 1000);
-    this.animateCounter('lessonsCount', this.targets.lessonsCount, 1000);
+    // this.animateCounter('experienceCount', this.targets.experienceCount, 3000);
+    // this.animateCounter('studentsCount', this.targets.studentsCount, 1000);
+    // this.animateCounter('lessonsCount', this.targets.lessonsCount, 1000);
   }
 
-  animateCounter(property: keyof typeof this.counters, target: number, duration: number) {
-    const interval = 30; 
-    const step = Math.max(1, Math.floor(target / (duration / interval))); 
+  animateCounter(
+    property: keyof typeof this.counters,
+    target: number,
+    duration: number
+  ) {
+    const interval = 30;
+    const step = Math.max(1, Math.floor(target / (duration / interval)));
 
     const updateCounter = () => {
-      if (this.counters[property] < target) {
-        this.counters[property] = Math.min(this.counters[property] + step, target);
-        setTimeout(updateCounter, interval);
-      }
+      // if (this.counters[property] < target) {
+      //   this.counters[property] = Math.min(this.counters[property] + step, target);
+      //   setTimeout(updateCounter, interval);
     };
-
-    updateCounter();
   }
+
+  // updateCounter();
 }

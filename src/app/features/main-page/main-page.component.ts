@@ -9,6 +9,9 @@ import { CarouselComponent } from '../carousel/carousel.component';
 import { InterstsComponent } from '../intersts/intersts.component';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { RegistrationFormComponent } from './registration-form.component';
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID, Inject } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-main-page',
@@ -22,7 +25,7 @@ import { RegistrationFormComponent } from './registration-form.component';
     CarouselComponent,
     InterstsComponent,
     RegistrationFormComponent,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
@@ -34,28 +37,57 @@ export class MainPageComponent implements OnDestroy {
   private texts: string[] = [];
   private translateSub!: Subscription;
   private animationTimeout: any;
+  private platformId: Object;
 
   constructor(
     private translate: TranslateService,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private titleService: Title,
+    private metaService: Meta,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.platformId = platformId;
+  }
 
   ngOnInit(): void {
-    this.route.fragment.subscribe((fragment) => {
-      if (fragment) {
-        setTimeout(() => {
-          const el = document.getElementById(fragment);
-          if (el) {
-            el.scrollIntoView({ behavior: 'smooth' });
-          }
-        }, 100);
-      }
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      this.route.fragment.subscribe((fragment) => {
+        if (fragment) {
+          setTimeout(() => {
+            const el = document.getElementById(fragment);
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 100);
+        }
+      });
+      this.setSeoTags();
+    }
 
     this.setupTranslation();
     this.translate.onLangChange.subscribe(() => {
       this.resetAnimation();
       this.setupTranslation();
+    });
+  }
+
+  private setSeoTags(): void {
+    const title =
+      'ICD School — языковые и компьютерные курсы в Худжанде и Джаббор Расуловском районе';
+    const description =
+      'ICD School — языковые и компьютерные курсы для детей и взрослых. Профессиональные преподаватели, интерактивные уроки, гибкое расписание.';
+    const keywords =
+      'курсы английского, курсы русского языка, компьютерные курсы, образовательный центр Худжанд, ICD School';
+
+    this.titleService.setTitle(title);
+
+    this.metaService.updateTag({ name: 'description', content: description });
+    this.metaService.updateTag({ name: 'keywords', content: keywords });
+
+    this.metaService.updateTag({ property: 'og:title', content: title });
+    this.metaService.updateTag({
+      property: 'og:description',
+      content: description,
     });
   }
 
@@ -69,7 +101,10 @@ export class MainPageComponent implements OnDestroy {
       .subscribe((translated: string[]) => {
         this.texts = translated;
         this.resetAnimation();
-        this.type();
+
+        if (isPlatformBrowser(this.platformId)) {
+          this.type();
+        }
       });
   }
 
@@ -100,8 +135,7 @@ export class MainPageComponent implements OnDestroy {
   }
 
   private resetAnimation(): void {
-    // Очищаем таймауты анимации
-    if (this.animationTimeout) {
+    if (isPlatformBrowser(this.platformId) && this.animationTimeout) {
       clearTimeout(this.animationTimeout);
     }
     this.displayedText = '';

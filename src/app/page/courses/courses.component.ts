@@ -1,7 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import {
+  Component,
+  Inject,
+  OnDestroy,
+  OnInit,
+  PLATFORM_ID,
+} from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Title, Meta } from '@angular/platform-browser';
+import { isPlatformBrowser } from '@angular/common';
 
 type TabKey = 'language' | 'frontend' | 'backend';
 
@@ -20,7 +28,7 @@ interface LanguageCourse {
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss'],
 })
-export class CoursesComponent {
+export class CoursesComponent implements OnInit, OnDestroy {
   activeTab: TabKey = 'language';
   isDropdownOpen = false;
   selectedLanguage = 'english';
@@ -29,10 +37,27 @@ export class CoursesComponent {
   languageCourses: Record<string, LanguageCourse> = {};
   tabs: Record<TabKey, any> = { language: {}, frontend: {}, backend: {} };
 
-  constructor(private translate: TranslateService) {
+  private langChangeSub: any;
+
+  constructor(
+    private translate: TranslateService,
+    private titleService: Title,
+    private metaService: Meta,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
+
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.setSeoTags();
+    }
+
     this.loadTranslations();
-    this.translate.onLangChange.subscribe(() => {
+
+    this.langChangeSub = this.translate.onLangChange.subscribe(() => {
       this.loadTranslations();
+      if (isPlatformBrowser(this.platformId)) {
+        this.setSeoTags();
+      }
     });
   }
 
@@ -63,5 +88,30 @@ export class CoursesComponent {
     this.isDropdownOpen = false;
     this.tabs.language = this.languageCourses[lang];
     console.log('Selected language:', lang, 'Image:', this.tabs.language.image);
+  }
+
+  private setSeoTags(): void {
+    const title =
+      'Курсы языков ICD School — Английский, Русский, Немецкий, Китайский, IELTS в Пролетарском районе, Чаббор Расуловский район';
+    const description =
+      'ICD School предлагает языковые курсы в Пролетарск, Ч.Расулов: английский, русский, немецкий, китайский и подготовку к IELTS. Профессиональные преподаватели и эффективные методики обучения.';
+    const keywords =
+      'курсы английского, курсы русского языка, курсы немецкого, курсы китайского, подготовка IELTS, языковые курсы Пролетарск, ICD School';
+
+    this.titleService.setTitle(title);
+    this.metaService.updateTag({ name: 'description', content: description });
+    this.metaService.updateTag({ name: 'keywords', content: keywords });
+
+    this.metaService.updateTag({ property: 'og:title', content: title });
+    this.metaService.updateTag({
+      property: 'og:description',
+      content: description,
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.langChangeSub) {
+      this.langChangeSub.unsubscribe();
+    }
   }
 }
