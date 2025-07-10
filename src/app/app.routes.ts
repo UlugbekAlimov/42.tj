@@ -8,15 +8,23 @@ import { FaqComponent } from './page/faq/faq.component';
 import { AboutUsComponent } from './page/about-us/about-us.component';
 import { PartnersComponent } from './page/partners/partners.component';
 import { StudTableComponent } from './features/stud-table/stud-table.component';
+import { NotFoundComponent } from './page/404/not-found.component';
 
 export const routes: Routes = [
-    { path:'', component:MainPageComponent },
-    { path:'courses', component: CoursesComponent },
-    { path:'courses-info', component: CourseInfoComponent },
-    { path:'about-course', component: AboutCourseComponent },
-    { path:'mentors', component: MentorsComponent },
-    { path:'faq', component: FaqComponent },
-    { path:'aboutus', component: AboutUsComponent },
-    { path:'partners', component: PartnersComponent },
-    { path:'table', component: StudTableComponent }
+  { path: '', component: MainPageComponent },
+  { path: 'courses', component: CoursesComponent },
+  { path: 'courses-info', component: CourseInfoComponent },
+  { path: 'about-course', component: AboutCourseComponent },
+  { path: 'mentors', component: MentorsComponent },
+  { path: 'faq', component: FaqComponent },
+  { path: 'aboutus', component: AboutUsComponent },
+  { path: 'partners', component: PartnersComponent },
+  { path: 'table', component: StudTableComponent },
+  {
+    path: '**',
+    loadComponent: () =>
+      import('../app/page/404/not-found.component').then(
+        (m) => m.NotFoundComponent
+      ),
+  },
 ];

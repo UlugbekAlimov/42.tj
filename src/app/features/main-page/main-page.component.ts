@@ -11,6 +11,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { RegistrationFormComponent } from './registration-form.component';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID, Inject } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-main-page',
@@ -36,12 +37,17 @@ export class MainPageComponent implements OnDestroy {
   private texts: string[] = [];
   private translateSub!: Subscription;
   private animationTimeout: any;
+  private platformId: Object;
 
   constructor(
     private translate: TranslateService,
     private route: ActivatedRoute,
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+    private titleService: Title,
+    private metaService: Meta,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.platformId = platformId;
+  }
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -55,12 +61,33 @@ export class MainPageComponent implements OnDestroy {
           }, 100);
         }
       });
+      this.setSeoTags();
     }
 
     this.setupTranslation();
     this.translate.onLangChange.subscribe(() => {
       this.resetAnimation();
       this.setupTranslation();
+    });
+  }
+
+  private setSeoTags(): void {
+    const title =
+      'ICD School — языковые и компьютерные курсы в Худжанде и Джаббор Расуловском районе';
+    const description =
+      'ICD School — языковые и компьютерные курсы для детей и взрослых. Профессиональные преподаватели, интерактивные уроки, гибкое расписание.';
+    const keywords =
+      'курсы английского, курсы русского языка, компьютерные курсы, образовательный центр Худжанд, ICD School';
+
+    this.titleService.setTitle(title);
+
+    this.metaService.updateTag({ name: 'description', content: description });
+    this.metaService.updateTag({ name: 'keywords', content: keywords });
+
+    this.metaService.updateTag({ property: 'og:title', content: title });
+    this.metaService.updateTag({
+      property: 'og:description',
+      content: description,
     });
   }
 
