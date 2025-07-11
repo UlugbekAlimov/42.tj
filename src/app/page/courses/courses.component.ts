@@ -97,6 +97,8 @@ export class CoursesComponent implements OnInit, OnDestroy {
       'ICD School предлагает языковые курсы в Пролетарск, Ч.Расулов: английский, русский, немецкий, китайский и подготовку к IELTS. Профессиональные преподаватели и эффективные методики обучения.';
     const keywords =
       'курсы английского, курсы русского языка, курсы немецкого, курсы китайского, подготовка IELTS, языковые курсы Пролетарск, ICD School';
+    const url = 'https://www.icdschool.tj/courses';
+    const image = 'https://www.icdschool.tj/assets/img/java.jpg';
 
     this.titleService.setTitle(title);
     this.metaService.updateTag({ name: 'description', content: description });
@@ -107,6 +109,19 @@ export class CoursesComponent implements OnInit, OnDestroy {
       property: 'og:description',
       content: description,
     });
+    this.metaService.updateTag({ property: 'og:url', content: url });
+    this.metaService.updateTag({ property: 'og:image', content: image });
+
+    this.metaService.updateTag({
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    });
+    this.metaService.updateTag({ name: 'twitter:title', content: title });
+    this.metaService.updateTag({
+      name: 'twitter:description',
+      content: description,
+    });
+    this.metaService.updateTag({ name: 'twitter:image', content: image });
   }
 
   ngOnDestroy() {
