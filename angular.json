@@ -33,6 +33,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
+              "src/yandex_fc91e38cc860b566.html",
               {
                 "glob": "robots.txt",
                 "input": "src/assets",
