@@ -18,7 +18,7 @@
         <a class="menu_nav" routerLink="/aboutus" role="menuitem" aria-label="О нас - история ICD School">{{ "navbar.us" | translate }}</a>
         <a class="menu_nav" routerLink="/faq" role="menuitem" aria-label="Часто задаваемые вопросы">{{ "navbar.faq" | translate }}</a>
       </div>
-      <div class="flex items-center gap-2">
+      <div class="relative flex items-center gap-2">
         <div
           (click)="switchLangToggle()"
           (keydown)="onLangKeydown($event)"

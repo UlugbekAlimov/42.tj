@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../core/api.service';
+import { TestimonialService } from '../../services/testimonial.service';
 import { CommonModule } from '@angular/common';
 import { CustomModalComponent } from '../../shared/custom-modal/custom-modal.component';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +17,7 @@ import { PLATFORM_ID, Inject } from '@angular/core';
 export class StudTableComponent implements OnInit {
   constructor(
     private apiService: ApiService,
+    private testimonialService: TestimonialService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
   selectedStudentId: any;
@@ -29,6 +31,15 @@ export class StudTableComponent implements OnInit {
   endDate: string = '';
   searchTerm: string = '';
 
+  // Свойства для работы с отзывами
+  testimonials: any[] = [];
+  isAddTestimonialModalOpen: boolean = false;
+  newTestimonial = {
+    name: '',
+    position: '',
+    text: ''
+  };
+
   get totalPages(): number {
     return Math.ceil(this.students.length / this.pageSize);
   }
@@ -41,6 +52,78 @@ export class StudTableComponent implements OnInit {
       },
       (error) => console.error('error loading', error)
     );
+
+    // Загружаем отзывы
+    this.loadTestimonials();
+  }
+
+  // Методы для работы с отзывами
+  loadTestimonials(): void {
+    this.testimonialService.getTestimonials().subscribe({
+      next: (data: any[]) => {
+        this.testimonials = data;
+      },
+      error: (error: any) => {
+        console.error('Ошибка при загрузке отзывов:', error);
+      }
+    });
+  }
+
+  openAddTestimonialModal(): void {
+    this.isAddTestimonialModalOpen = true;
+    this.resetTestimonialForm();
+  }
+
+  closeAddTestimonialModal(): void {
+    this.isAddTestimonialModalOpen = false;
+    this.resetTestimonialForm();
+  }
+
+  resetTestimonialForm(): void {
+    this.newTestimonial = {
+      name: '',
+      position: '',
+      text: ''
+    };
+  }
+
+  addTestimonial(): void {
+    if (this.newTestimonial.name && this.newTestimonial.text) {
+      this.testimonialService.addTestimonial(this.newTestimonial).subscribe({
+        next: () => {
+          this.closeAddTestimonialModal();
+          // Показываем уведомление об успехе
+          alert('Отзыв успешно добавлен! Он появится в карусели на главной странице.');
+        },
+        error: (error: any) => {
+          console.error('Ошибка при добавлении отзыва:', error);
+          alert('Ошибка при добавлении отзыва');
+        }
+      });
+    } else {
+      alert('Пожалуйста, заполните обязательные поля (имя и текст отзыва)');
+    }
+  }
+
+  deleteTestimonialFromForm(): void {
+    // Находим индекс первого совпадающего отзыва
+    const idx = this.testimonials.findIndex(t => t.name === this.newTestimonial.name && t.text === this.newTestimonial.text);
+    if (idx !== -1) {
+      const testimonials = [...this.testimonials];
+      testimonials.splice(idx, 1);
+      localStorage.setItem('testimonials', JSON.stringify(testimonials));
+      this.testimonialService.loadTestimonials();
+      this.closeAddTestimonialModal();
+      alert('Отзыв удалён!');
+    } else {
+      alert('Такой отзыв не найден для удаления');
+    }
+  }
+
+  deleteTestimonialById(id: number): void {
+    const testimonials = this.testimonials.filter(t => t.id !== id);
+    localStorage.setItem('testimonials', JSON.stringify(testimonials));
+    this.testimonialService.loadTestimonials();
   }
 
   downloadExcel(): void {

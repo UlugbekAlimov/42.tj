@@ -9,6 +9,7 @@ import {
   PLATFORM_ID,
   AfterViewInit,
 } from '@angular/core';
+import { TestimonialService } from '../../services/testimonial.service';
 
 @Component({
   selector: 'app-carousel',
@@ -21,21 +22,8 @@ import {
 export class CarouselComponent implements OnInit, AfterViewInit {
   isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   currentIndex: number = 0;
-  testimonials = [
-    {
-      name: 'Mirvohid Azimov',
-      position: 'Software Engineer Intern @ Yandex',
-      text: "I'm starting a path as a Software Engineer Intern at Yandex! ...",
-      image: '../../../assets/img/azimjon.jpg',
-    },
-    {
-      name: 'Sandra Newman',
-      position: 'STEP Intern @ Google',
-      text: "I'm so excited to announce that I'm joining Google dev as a STEP Intern...",
-      image:
-        'https://s26162.pcdn.co/wp-content/uploads/2019/05/sandra-newman-c-george-baier-color-600x600.jpg',
-    },
-  ];
+  testimonials: any[] = [];
+  private testimonialService = inject(TestimonialService);
 
   @ViewChild('swiper', { static: false }) swiperElement?: ElementRef;
 
@@ -43,7 +31,34 @@ export class CarouselComponent implements OnInit, AfterViewInit {
     if (this.isBrowser) {
       const swiper = await import('swiper/element/bundle');
       swiper.register();
+      
+      // Загружаем отзывы из API
+      this.loadTestimonials();
     }
+  }
+
+  loadTestimonials() {
+    this.testimonialService.getTestimonials().subscribe({
+      next: (data: any[]) => {
+        this.testimonials = data;
+      },
+      error: (error: any) => {
+        console.error('Ошибка при загрузке отзывов:', error);
+        // Если API недоступен, используем статические данные
+        this.testimonials = [
+          {
+            name: 'Mirvohid Azimov',
+            position: 'Software Engineer Intern @ Yandex',
+            text: "I'm starting a path as a Software Engineer Intern at Yandex! This is an amazing opportunity to work with cutting-edge technology and learn from the best engineers in the industry.",
+          },
+          {
+            name: 'Sandra Newman',
+            position: 'STEP Intern @ Google',
+            text: "I'm so excited to announce that I'm joining Google dev as a STEP Intern! This program will help me develop my technical skills and work on real-world projects.",
+          },
+        ];
+      }
+    });
   }
 
   get swiperInstance() {
