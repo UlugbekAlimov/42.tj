@@ -48,4 +48,34 @@ export class ApiService {
       ? this.http.get(`${this.apiUrl}/excel/base64`)
       : of(null);
   }
+
+  // Методы для работы с отзывами
+  getTestimonials(): Observable<any[]> {
+    if (this.isBrowser()) {
+      const stored = localStorage.getItem('testimonials');
+      const testimonials = stored ? JSON.parse(stored) : [];
+      return of(testimonials);
+    }
+    return of([]);
+  }
+
+  addTestimonial(testimonial: any): Observable<any> {
+    if (this.isBrowser()) {
+      const stored = localStorage.getItem('testimonials');
+      const testimonials = stored ? JSON.parse(stored) : [];
+      
+      // Добавляем ID и дату к отзыву
+      const newTestimonial = {
+        ...testimonial,
+        id: Date.now(),
+        date: new Date().toISOString()
+      };
+      
+      testimonials.push(newTestimonial);
+      localStorage.setItem('testimonials', JSON.stringify(testimonials));
+      
+      return of(newTestimonial);
+    }
+    return of(null);
+  }
 }
